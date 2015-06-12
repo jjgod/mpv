@@ -703,6 +703,15 @@ hwaccel_features = [
                             framework='IOSurface',
                             use='libav')),
     } , {
+        'name': '--videotoolbox-hwaccel',
+        'desc': 'libavcodec VideoToolbox hwaccel',
+        'func': compose_checks(
+            check_headers('VideoToolbox/VideoToolbox.h'),
+            check_statement('libavcodec/videotoolbox.h',
+                            'ff_videotoolbox_session_create(NULL, 0, 0, 0)',
+                            framework='VideoToolbox',
+                            use='libav')),
+    } , {
         'name': 'vda-default-init2',
         'desc': 'libavcodec VDA hwaccel (configurable AVVDAContext)',
         'deps': [ 'vda-hwaccel' ],
@@ -715,6 +724,11 @@ hwaccel_features = [
         'deps': [ 'gl-cocoa', 'vda-hwaccel' ],
         'func': check_true
     }, {
+        'name': '--videotoolbox-gl',
+        'desc': 'VideoToolbox with OpenGL',
+        'deps': [ 'gl-cocoa', 'videotoolbox-hwaccel' ],
+        'func': check_true
+    } , {
         'name': '--vdpau-hwaccel',
         'desc': 'libavcodec VDPAU hwaccel',
         'deps': [ 'vdpau' ],

@@ -193,6 +193,7 @@ struct mpv_opengl_cb_context *mp_opengl_create(struct mpv_global *g,
     case HWDEC_VDPAU:   ctx->hwapi = "vdpau"; break;
     case HWDEC_VDA:     ctx->hwapi = "vda"; break;
     case HWDEC_VAAPI:   ctx->hwapi = "vaapi"; break;
+    case HWDEC_VIDEOTOOLBOX: ctx->hwapi = "videotoolbox"; break;
     default:            ctx->hwapi = "";
     }
 

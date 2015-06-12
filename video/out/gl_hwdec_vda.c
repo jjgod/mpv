@@ -227,3 +227,14 @@ const struct gl_hwdec_driver gl_hwdec_vda = {
     .map_image = map_image,
     .destroy = destroy,
 };
+
+#if HAVE_VIDEOTOOLBOX_GL
+const struct gl_hwdec_driver gl_hwdec_videotoolbox = {
+    .api_name = "videotoolbox",
+    .imgfmt = IMGFMT_VIDEOTOOLBOX,
+    .create = create,
+    .reinit = reinit,
+    .map_image = map_image,
+    .destroy = destroy,
+};
+#endif
